@@ -6,15 +6,38 @@ use ApiPlatform\Metadata\ApiResource;
 use App\Repository\ProductRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Post;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
-#[ApiResource]
+#[Vich\Uploadable]
+#[ApiResource(
+    types: ['https://schema.org/Book'],
+    operations: [
+        new GetCollection(),
+        new Post(
+            outputFormats: ['jsonld' => ['application/ld+json']],
+            inputFormats: ['multipart' => ['multipart/form-data']]
+        )
+    ]
+)]
 class Product
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
+
+    #[Vich\UploadableField(
+        mapping: 'media_object',
+        fileNameProperty: 'filePath',
+    )]
+    public ?File $file = null;
+
+    #[ORM\Column(nullable: true)]
+    public ?string $filePath = null;
 
     #[ORM\Column(length: 255)]
     private ?string $name = null;
@@ -75,7 +98,7 @@ class Product
         return $this->stripePriceId;
     }
 
-    public function setStripePriceId(?string $stripePriceId): static
+    public function setStripePriceId(string $stripePriceId): static
     {
         $this->stripePriceId = $stripePriceId;
 

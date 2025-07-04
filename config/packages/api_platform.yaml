@@ -1,7 +1,12 @@
 api_platform:
+    formats:
+        jsonld: ['application/ld+json']
+        multipart: ['multipart/form-data']
     title: Hello API Platform
     version: 1.0.0
     defaults:
         stateless: true
         cache_headers:
             vary: ['Content-Type', 'Authorization', 'Origin']
+
+  
