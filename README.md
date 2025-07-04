@@ -69,14 +69,31 @@ composer require vich/uploader-bundle
 
 1. **Cloner ce dépôt**
 2. Installer les dépendances :
-   `composer install`
+
+   ```bash
+   composer install
+   ```
 3. Configurer `.env` (BDD, clés Stripe, JWT, etc.)
-4. Créer la base de données :
-   `php bin/console doctrine:database:create`
-5. Lancer les migrations :
-   `php bin/console doctrine:migrations:migrate`
-6. (Optionnel) Générer des fixtures :
-   `php bin/console doctrine:fixtures:load`
+4. **Générer la paire de clés JWT** :
+
+   ```bash
+   php bin/console lexik:jwt:generate-keypair
+   ```
+5. Créer la base de données :
+
+   ```bash
+   php bin/console doctrine:database:create
+   ```
+6. Lancer les migrations :
+
+   ```bash
+   php bin/console doctrine:migrations:migrate
+   ```
+7. (Optionnel) Générer des fixtures :
+
+   ```bash
+   php bin/console doctrine:fixtures:load
+   ```
 
 ---
 
@@ -86,3 +103,5 @@ composer require vich/uploader-bundle
 * Ce projet est prévu pour être utilisé en back pur (API), mais reste extensible.
 
 ---
+
+
