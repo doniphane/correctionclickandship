@@ -1,28 +1,88 @@
-Projet Symfony de Zero sans template et --webapp
+Bien sûr ! Voici un README clair, professionnel et structuré pour ton projet Symfony **“from scratch”** (sans template, sans `--webapp`), résumant la stack et les commandes d’installation utilisées :
 
-#L'ORM Doctrine pour interagir avec la base de données
+---
+
+# Projet Symfony – Démarrage from scratch
+
+Ce projet a été initialisé **sans template** (`--webapp` non utilisé), avec Symfony et les principaux bundles pour développer une API robuste et sécurisée.
+
+## Stack technique installée
+
+* **Symfony** (installé manuellement, sans template)
+* **Doctrine ORM** : Gestion de la base de données
+* **API Platform** : Création rapide d’API REST et GraphQL
+* **MakerBundle** : Génération rapide d’entités, contrôleurs, etc.
+* **SecurityBundle** : Gestion des utilisateurs, authentification & autorisation
+* **JWT Auth** : Authentification sécurisée par token JSON Web Token
+* **CORS (NelmioCorsBundle)** : Acceptation des requêtes cross-origin (API front/back séparés)
+* **Stripe SDK** : Paiements en ligne avec Stripe
+* **Fixtures** : Création de données de test pour le développement
+* **VichUploaderBundle** : Upload et gestion de fichiers (images, documents...)
+
+---
+
+## Installation des dépendances
+
+Ouvre ton terminal à la racine du projet et exécute les commandes suivantes :
+
+```bash
+# Doctrine ORM : Interagir avec la base de données
 composer require symfony/orm-pack
 
-#Installe API Platform et ses dépendances
+# API Platform : Créer facilement une API REST/GraphQL
 composer require api
 
-#Installe le MakerBundle pour générer du code (entités, contrôleurs, etc.)
+# MakerBundle : Générer du code (entités, contrôleurs, etc.)
 composer require --dev symfony/maker-bundle
 
-#Installe le bundle de sécurité pour gérer l'authentification et les autorisations
+# SecurityBundle : Authentification et gestion des rôles
 composer require symfony/security-bundle
 
-#Installe le bundle pour l'authentification par token JWT
+# LexikJWT : Authentification par JWT (token sécurisé)
 composer require lexik/jwt-authentication-bundle
 
-#Installe le bundle pour gérer les requêtes Cross-Origin (CORS)
+# NelmioCorsBundle : Gérer le CORS (Cross-Origin Resource Sharing)
 composer require nelmio/cors-bundle
 
-#Installe le SDK PHP officiel de Stripe pour interagir avec leur API
+# Stripe PHP SDK : Paiements Stripe
 composer require stripe/stripe-php
 
-#Installe le bundle pour créer des données de test (fixtures)
+# Fixtures : Générer des données de test en base
 composer require --dev doctrine/doctrine-fixtures-bundle
 
-#Installe le bundle pour gérer les fichiers
+# VichUploaderBundle : Upload et gestion de fichiers
 composer require vich/uploader-bundle
+```
+
+---
+
+## Résumé de l’architecture
+
+* **Pas de template web** : tout a été initialisé manuellement pour un contrôle total.
+* **API-first** : Le projet est principalement orienté API, idéal pour un front React/Vue ou une architecture SPA/mobile.
+* **Sécurité** : Authentification JWT, gestion des rôles, CORS strict.
+* **Gestion avancée** : Upload de fichiers, paiements Stripe, et génération de données de test.
+
+---
+
+## Pour démarrer
+
+1. **Cloner ce dépôt**
+2. Installer les dépendances :
+   `composer install`
+3. Configurer `.env` (BDD, clés Stripe, JWT, etc.)
+4. Créer la base de données :
+   `php bin/console doctrine:database:create`
+5. Lancer les migrations :
+   `php bin/console doctrine:migrations:migrate`
+6. (Optionnel) Générer des fixtures :
+   `php bin/console doctrine:fixtures:load`
+
+---
+
+## Notes
+
+* **Aucune dépendance frontend** incluse (pas de Twig, pas de React, pas de Vue dans ce repo).
+* Ce projet est prévu pour être utilisé en back pur (API), mais reste extensible.
+
+---
