@@ -1,4 +1,4 @@
-Bien sûr ! Voici un README clair, professionnel et structuré pour ton projet Symfony **“from scratch”** (sans template, sans `--webapp`), résumant la stack et les commandes d’installation utilisées :
+
 
 ---
 
